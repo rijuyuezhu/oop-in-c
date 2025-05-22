@@ -4,9 +4,9 @@ SRCS = $(shell find ./ -name "*.c")
 DEPS = $(addprefix $(BUILD_DIR)/src/, $(addsuffix .d,$(SRCS)))
 OBJS = $(addprefix $(BUILD_DIR)/src/, $(addsuffix .o,$(SRCS)))
 
-all: $(BUILD_DIR)/libcompiler.a
+all: $(BUILD_DIR)/liboopinc.a
 
-$(BUILD_DIR)/libcompiler.a: $(YFO) $(filter-out $(LFO) $(BUILD_DIR)/src/./main.c.o,$(OBJS))
+$(BUILD_DIR)/liboopinc.a: $(YFO) $(filter-out $(LFO) $(BUILD_DIR)/src/./main.c.o,$(OBJS))
 	@echo + AR $(notdir $@) >&2
 	@ar rcs $@ $(filter-out $(LFO) $(BUILD_DIR)/src/./main.o,$(OBJS)) 
 

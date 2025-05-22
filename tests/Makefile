@@ -19,12 +19,12 @@ $(BUILD_DIR)/tests/%.c.o: %.c
 	@echo + CC tests/$(notdir $<) >&2
 	@$(CC) $(CFLAGS) -c $< -o $@ -MMD
 
-$(TEST_EXE): $(OBJS) $(BUILD_DIR)/libcompiler.a
+$(TEST_EXE): $(OBJS) $(BUILD_DIR)/liboopinc.a
 	@echo + LD tests/$(notdir $@) >&2
-	@$(CC) $(CFLAGS) $^ -o $@ -L$(BUILD_DIR) -lcompiler # -lfl -ly
+	@$(CC) $(CFLAGS) $^ -o $@ -L$(BUILD_DIR) -loopinc
 
 clean:
 
 -include $(DEPS)
 
-.PHONY: all test testvg clean run runvg
+.PHONY: all test testvg clean
